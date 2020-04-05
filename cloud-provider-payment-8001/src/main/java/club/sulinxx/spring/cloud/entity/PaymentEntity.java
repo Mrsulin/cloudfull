@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -17,21 +16,19 @@ import java.io.Serializable;
  */
 @Data
 @TableName("payment")
-public class PaymentEntity extends Model<PaymentEntity> implements Serializable {
-    private static final long serialVersionUID = -72794343413478449L;
+public class PaymentEntity extends Model<PaymentEntity> {
     /***
      *主键
      **/
-    @TableId(type=IdType.UUID)
+    @TableId(type= IdType.UUID)
     private String id;
     /***
      *制服流水号
      **/
     private String serial;
 
-
     @Override
     protected Serializable pkVal() {
-        return this.id;
+        return super.pkVal();
     }
 }

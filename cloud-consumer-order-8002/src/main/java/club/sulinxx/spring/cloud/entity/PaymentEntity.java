@@ -19,5 +19,4 @@ public class PaymentEntity {
      **/
     private String serial;
 
-
 }

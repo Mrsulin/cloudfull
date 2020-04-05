@@ -1,10 +1,10 @@
 package club.sulinxx.spring.cloud.controller;
 
+import club.sulinx.spring.cloud.utils.R;
+import club.sulinx.spring.cloud.vo.InsertPaymentVo;
 import club.sulinxx.spring.cloud.entity.PaymentEntity;
 import club.sulinxx.spring.cloud.exception.BaseException;
 import club.sulinxx.spring.cloud.service.PaymentService;
-import club.sulinxx.spring.cloud.utils.R;
-import club.sulinxx.spring.cloud.vo.InsertPaymentVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +55,7 @@ public class PaymentController {
         entity.insert();
         return R.ok();
     }
+
     /***
      * @Param serial:单号
      * @return R
@@ -63,9 +64,9 @@ public class PaymentController {
     @ApiOperation(value = "测试其他异常捕获，并包装", notes = "测试其他异常捕获，并包装")
     public R insert() {
         try {
-            System.out.println(3/0);
+            System.out.println(3 / 0);
         } catch (ArithmeticException e) {
-            throw new BaseException("算数异常",e);
+            throw new BaseException("算数异常", e);
         }
         return R.ok();
     }

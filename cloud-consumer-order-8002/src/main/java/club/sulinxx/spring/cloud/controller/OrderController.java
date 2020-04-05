@@ -1,7 +1,7 @@
 package club.sulinxx.spring.cloud.controller;
 
-import club.sulinxx.spring.cloud.utils.R;
-import club.sulinxx.spring.cloud.vo.InsertPaymentVo;
+import club.sulinx.spring.cloud.utils.R;
+import club.sulinx.spring.cloud.vo.InsertPaymentVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
