@@ -47,7 +47,7 @@ public class PaymentController {
      * @Param serial:单号
      * @return R
      **/
-    @PostMapping("/data/create")
+    @PostMapping("/create")
     @ApiOperation(value = "新增数据", notes = "新增数据")
     public R insert(@Valid @RequestBody InsertPaymentVo data) {
         PaymentEntity entity = new PaymentEntity();
