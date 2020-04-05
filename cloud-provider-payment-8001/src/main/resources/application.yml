@@ -32,9 +32,15 @@ spring:
             multi-statement-allow: true
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
-  typeAliasesPackage: com.spaceon.cn.modules.*.entity
+  typeAliasesPackage: club.sulinxx.spring.cloud.*.entity
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
