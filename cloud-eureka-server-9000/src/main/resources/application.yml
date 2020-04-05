@@ -1,0 +1,14 @@
+server:
+  port: 9000
+eureka:
+  instance:
+    hostname: sulin-eureka-server
+  client:
+#    表示是否从其他eureka-server获取注册信息，如果是单点server，则不需要配置
+    fetch-registry: false
+#    表示不需要向服务中心注册自己
+    register-with-eureka: false
+    service-url:
+      default-zone: http://${eureka.instance.hostname}:${server.port}/sulin-eureka
+
+
