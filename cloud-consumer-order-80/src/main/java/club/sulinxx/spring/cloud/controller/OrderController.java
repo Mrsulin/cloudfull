@@ -26,7 +26,7 @@ public class OrderController {
     @Autowired
     RestTemplate restTemplate;
 
-    private static final String BASE_URL="http://localhost:8001";
+    private static final String BASE_URL="http://cloud-payment-service";
 
     /***
      * @Param serial:单号

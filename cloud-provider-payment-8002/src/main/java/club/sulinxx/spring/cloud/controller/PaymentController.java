@@ -5,7 +5,6 @@ import club.sulinx.spring.cloud.vo.InsertPaymentVo;
 import club.sulinxx.spring.cloud.entity.PaymentEntity;
 import club.sulinxx.spring.cloud.exception.BaseException;
 import club.sulinxx.spring.cloud.service.PaymentService;
-import com.netflix.discovery.converters.Auto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +25,9 @@ import java.util.List;
  * @since 2020-04-04 20:33:15
  */
 @RestController
+@Slf4j
 @RequestMapping(value = "payment", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Api(tags = "支付微服务接口管理")
-@Slf4j
 public class PaymentController {
     /**
      * 服务对象
@@ -41,7 +40,6 @@ public class PaymentController {
 
     @Autowired
     private DiscoveryClient discoveryClient;
-
     /**
      * 通过主键查询单条数据
      *
@@ -101,7 +99,4 @@ public class PaymentController {
         });
         return R.ok().put("discovery",discoveryClient);
     }
-
-
-
 }
