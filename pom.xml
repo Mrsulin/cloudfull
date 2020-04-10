@@ -10,7 +10,7 @@
     <modules>
         <module>cloud-eureka-server-9000</module>
         <module>cloud-eureka-server-9001</module>
-        <module>cloud-consumer-order-80</module>
+        <module>cloud-consumer-order-11111</module>
         <module>cloud-commons-base</module>
         <module>cloud-provider-payment-8001</module>
         <module>cloud-provider-payment-8002</module>

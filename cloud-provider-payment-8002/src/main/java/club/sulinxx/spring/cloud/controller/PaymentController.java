@@ -48,7 +48,7 @@ public class PaymentController {
      */
     @GetMapping("/{id}/get")
     @ApiOperation(value = "查询接口", notes = "测试测试")
-    public R getById(@PathVariable String id) {
+    public R getById(@PathVariable("id") String id) {
         PaymentEntity entity = this.paymentService.getById(id);
 
         return R.ok().put("data", entity).put("port",port);
