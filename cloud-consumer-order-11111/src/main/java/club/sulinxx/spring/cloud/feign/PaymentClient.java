@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@FeignClient(value = "cloud-payment-service")
-@RequestMapping("/payment")
+@FeignClient(value = "cloud-payment-service",fallback = PaymentClientFailback.class)
 public interface PaymentClient {
 
-    @GetMapping("/{id}/get")
+    @GetMapping("/payment//{id}/get")
     public R getById(@PathVariable("id") String id);
 
-    @PostMapping("/create")
+    @PostMapping("/payment//create")
     public R insert(@Valid @RequestBody InsertPaymentVo data);
 
-    @GetMapping("/exceptionWrapperTest")
+    @GetMapping("/payment//exceptionWrapperTest")
     public R insert();
 
-    @GetMapping("/service/discovery")
+    @GetMapping("/payment//service/discovery")
     public R discovery();
 
 }

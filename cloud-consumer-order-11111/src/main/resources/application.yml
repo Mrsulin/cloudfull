@@ -15,13 +15,30 @@ hystrix:
     default:
       coreSize: 500  #并发执行的最大线程数，默认10
   command:
-    paas-file:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 3600000
     default:
       execution:
         isolation:
           thread:
             timeoutInMilliseconds: 8000
+
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      cloud-payment-service:
+        loggerLever: FULL
+logging:
+  level:
+    club.sulinxx.spring.cloud.feign.PaymentClient: debug
+#    暴露dashboard 端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+turbine:
+#  要监控的微服务列表
+  app-config: cloud-payment-service
+  cluster-name-expression: "'default'"
