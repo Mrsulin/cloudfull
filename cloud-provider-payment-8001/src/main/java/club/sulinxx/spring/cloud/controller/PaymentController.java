@@ -52,7 +52,6 @@ public class PaymentController {
     @ApiOperation(value = "查询接口", notes = "测试测试")
     public R getById(@PathVariable("id") String id) {
         PaymentEntity entity = this.paymentService.getById(id);
-
         return R.ok().put("data", entity).put("port",port);
     }
 
@@ -63,6 +62,9 @@ public class PaymentController {
     @PostMapping("/create")
     @ApiOperation(value = "新增数据", notes = "新增数据")
     public R insert(@Valid @RequestBody InsertPaymentVo data) {
+        if(data.getSerial().equals("1")){
+            System.out.println(3 / 0);
+        }
         PaymentEntity entity = new PaymentEntity();
         entity.setSerial(data.getSerial());
         entity.insert();

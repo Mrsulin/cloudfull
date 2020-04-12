@@ -25,6 +25,7 @@ import javax.validation.Valid;
 @Slf4j
 @Api(tags = "消费者订单微服务(默认熔断方法)")
 @RequestMapping("default")
+@DefaultProperties(defaultFallback = "defaultMethod")
 public class DefaultController {
 
     @Autowired
@@ -41,7 +42,19 @@ public class DefaultController {
      **/
     @PostMapping(value = "/consumer/payment/create", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "ribbon新增数据", notes = "ribbon新增数据")
+    @HystrixCommand
     public R insert(@Valid @RequestBody InsertPaymentVo data) {
+        System.out.println("调用服务开始");
+        return restTemplate.postForObject(BASE_URL+"/payment/create", data,R.class);
+    }
+    /***
+     * @Param serial:单号
+     * @return R
+     **/
+    @PostMapping(value = "/consumer/payment/create2", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "ribbon新增数据", notes = "ribbon新增数据")
+    @HystrixCommand
+    public R insert2(@Valid @RequestBody InsertPaymentVo data) {
         System.out.println("调用服务开始");
         return restTemplate.postForObject(BASE_URL+"/payment/create", data,R.class);
     }
@@ -52,7 +65,13 @@ public class DefaultController {
          **/
     @PostMapping(value = "/consumer/payment/feign/create", produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "feign新增数据", notes = "feign新增数据")
+    @HystrixCommand
     public R feignInsert(@Valid @RequestBody InsertPaymentVo data) {
         return paymentClient.insert(data);
     }
+
+    public R defaultMethod() {
+        return R.error("触发公共统一保护方法!");
+    }
+
 }
