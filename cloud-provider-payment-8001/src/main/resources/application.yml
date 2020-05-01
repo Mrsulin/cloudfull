@@ -6,7 +6,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/cloudfullpay?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: root
       password: "06100610"
@@ -29,6 +29,10 @@ spring:
         wall:
           config:
             multi-statement-allow: true
+  redis:
+    host: 132.232.59.55
+    port: 6379
+    password: 06100610
 mybatis-plus:
   mapper-locations: classpath*:/mapper/**/*.xml
   typeAliasesPackage: club.sulinxx.spring.cloud.*.entity

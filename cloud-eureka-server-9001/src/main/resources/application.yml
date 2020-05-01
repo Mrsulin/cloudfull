@@ -8,7 +8,7 @@ eureka:
     hostname: localhost
   client:
 #    表示是否从其他eureka-server获取注册信息，如果是单点server，则不需要配置
-    fetch-registry: false
+    fetch-registry: true
 #    表示是否需要向服务中心注册自己
     register-with-eureka: true
     service-url:

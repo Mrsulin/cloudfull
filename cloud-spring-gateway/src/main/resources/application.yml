@@ -1,0 +1,36 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      routes:
+        - id: payment-gateway
+#          uri: http://localhost:8001
+          uri: lb://cloud-payment-service
+          predicates:
+            - Path=/payment/**
+          filters:
+            #使用限流过滤器 ，是springcloudgateway提供的
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@userKeyResolver}'
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 50
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  redis:
+    host: 132.232.59.55
+    password: "06100610"
+    port: 6379
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+      registry-fetch-interval-seconds:  5
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
